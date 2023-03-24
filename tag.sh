@@ -42,6 +42,7 @@ else
         # Increase the number by 1
         new_dev_number=$((dev_number + 1))
         # Get the new tag
+	major_minor_patch=$(echo "$highest_tag" | awk -F- '{print $1}')
         new_tag="$major_minor_patch-dev$new_dev_number"
     fi
     # Push the new tag
