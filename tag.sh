@@ -8,7 +8,7 @@ if [ -z "$latest_tag" ]; then
     git tag -a "$new_tag" -m "$new_tag"
     git push origin "$new_tag"
 # Check if the latest commit is tagged
-elif [ $(git describe --exact-match HEAD >/dev/null 2>&1) ]; then
+elif $(git describe --exact-match HEAD >/dev/null 2>&1); then
     # Check if the tag is live tag MAJOR.MINOR.PATCH-devX
     if [ "$(echo "$latest_tag" | awk -F-dev '{print NF}')" -eq "2" ]; then
         echo "commit is already tagged with -devX, exiting..."
